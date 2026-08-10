@@ -1,3 +1,21 @@
+from collections import deque
+
+def bfs_levels(root):
+    """Returns a list of levels, each a list of Nodes at that depth."""
+    levels = []
+    queue = deque([root])
+    while queue:
+        level_size = len(queue)
+        level = []
+        for _ in range(level_size):
+            node = queue.popleft()
+            level.append(node)
+            if node.is_folder:
+                queue.extend(node.children)
+        levels.append(level)
+    return levels
+
+
 def compute_sizes(node):
     """Post-order DFS: children resolved before the parent. (Phase 3 — recursive)"""
     if not node.is_folder:
