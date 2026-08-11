@@ -1,6 +1,7 @@
 import os
 from node import Node
 
+
 def build_tree(path):
     name = os.path.basename(path) or path
     node = Node(name, path, is_folder=True)
@@ -19,7 +20,8 @@ def build_tree(path):
         pass  # skip folders you can't read; don't crash
     return node
 
-    def count_nodes(node):
+
+def count_nodes(node):
     if not node.is_folder:
         return 1
     return 1 + sum(count_nodes(c) for c in node.children)
