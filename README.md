@@ -82,6 +82,16 @@ and ships with Python, which fits a small CLI tool.
 - top_k_files: O(n log k) time using a size-k min-heap, versus O(n log n)
   for a full sort.
 
+  
+## Tested performance
+
+  Ran against a real ~13.4 GB user directory (Windows):
+- Total scanned: 14,092,839 KB (~13.4 GB)
+- Runtime: ~22.5 seconds
+- Correctly surfaced duplicate large files (e.g., 3 separate installs of the
+  same 227MB executable) — exactly the kind of redundant space usage this
+  tool is meant to catch
+
 ## What I'd add next
 
 - A basic web UI on top of the same core logic (the CLI output maps
